@@ -1,0 +1,38 @@
+group 'org.shest'
+version '1.0-SNAPSHOT'
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.1'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+    flatDir {
+        dirs "lib"
+    }
+}
+
+dependencies {
+    compile name: 'jxbrowser-6.21'
+    compile name: 'jxbrowser-linux64-6.21'
+    compile name: 'jxbrowser-mac-6.21'
+    compile name: 'jxbrowser-win32-6.21'
+    compile name: 'jxbrowser-win64-6.21'
+    compile name: 'license'
+}
+
+jar {
+    manifest {
+        attributes 'Main-Class': 'org.shest.Main'
+    }
+}
